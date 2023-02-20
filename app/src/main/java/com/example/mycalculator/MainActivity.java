@@ -181,8 +181,8 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragments(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .add(R.id.framelayout, new BannerFragment())
                 .add(R.id.framelayout, new InterstitialFragment())
+                .add(R.id.framelayout, new BannerFragment())
                 .commit();
     }
 }

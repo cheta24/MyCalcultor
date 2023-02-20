@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InterstitialFragment">
+    tools:context=".BannerFragment">
 
     <net.pubnative.lite.sdk.views.HyBidBannerAdView
         android:id="@+id/hybid_banner"

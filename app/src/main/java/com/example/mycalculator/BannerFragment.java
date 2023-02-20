@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import net.pubnative.lite.sdk.interstitial.HyBidInterstitialAd;
 import net.pubnative.lite.sdk.views.HyBidBannerAdView;
 import net.pubnative.lite.sdk.views.PNAdView;
 
@@ -18,51 +16,45 @@ import net.pubnative.lite.sdk.views.PNAdView;
  * create an instance of this fragment.
  */
 public class BannerFragment extends Fragment {
-
+    String Zone_Id = "2";
     private HyBidBannerAdView mBanner;
-    private HyBidInterstitialAd mInterstitial;
-    String Zone_Id = "3";
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_banner, container, false);
+        return inflater.inflate(R.layout.fragment_interstitial, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBanner = view.findViewById(R.id.hybid_banner);
-        loadInterstitial();
+
+
+         loadBanner();
     }
-    private void loadInterstitial() {
-        mInterstitial = new HyBidInterstitialAd(getActivity(),Zone_Id, new HyBidInterstitialAd.Listener() {
-            @Override
-            public void onInterstitialLoaded() {
-                mInterstitial.show();
-            }
 
+    private void loadBanner() {
+        mBanner.load(Zone_Id, new PNAdView.Listener() {
             @Override
-            public void onInterstitialLoadFailed(Throwable error) {
+            public void onAdLoaded() {
 
             }
 
             @Override
-            public void onInterstitialImpression() {
+            public void onAdLoadFailed(Throwable error) {
 
             }
 
             @Override
-            public void onInterstitialDismissed() {
+            public void onAdImpression() {
 
             }
 
             @Override
-            public void onInterstitialClick() {
+            public void onAdClick() {
 
             }
         });
-        mInterstitial.load();
     }
 }
